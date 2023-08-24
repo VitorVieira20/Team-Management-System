@@ -96,8 +96,6 @@ public class AthleteHandler {
     }
 
     public void seeIfAthleteExistsInTeamAndInsert (int athleteId) {
-        // TODO: Falta fazer a verificação se o atleta existe em de fazer a inserção
-
         String teamIdSql = "SELECT * FROM teams WHERE team_name = ? AND team_gender = ?";
 
         String athleteExistSql = "SELECT * FROM athletes_has_teams WHERE athletes_id = ? AND teams_id = ?";
@@ -135,7 +133,42 @@ public class AthleteHandler {
         }
     }
 
-    public boolean showAthleteById(int athleteId, boolean validId) {
+    public boolean athleteExist(int athleteId) {
+        Scanner scanner = new Scanner(System.in);
+        String selectAthlete = "SELECT * FROM athletes WHERE id = ?";
+        try {
+            Connection connection = Conn.getConn();
+            PreparedStatement getAthlete = connection.prepareStatement(selectAthlete);
+            getAthlete.setInt(1, athleteId);
+            ResultSet atheteSet = getAthlete.executeQuery();
+
+            if (!atheteSet.isBeforeFirst()) {
+                System.out.println("Este atleta não existe");
+                System.out.println("Pretende introduzir outro ID ou sair?");
+                System.out.println("1- Introduzir novo ID");
+                System.out.println("2- Sair");
+
+                while (true) {
+                    int choice = scanner.nextInt();
+                    switch (choice) {
+                        case 1:
+                            return false;
+                        case 2:
+                            return true;
+                        default:
+                            System.out.println("Opção incorreta: " + choice);
+                            System.out.println("Por favor, escolha uma opção válida.");
+                    }
+                }
+            } else {
+                return true;
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public boolean showAthleteById(int athleteId) {
         String getAthlete = "SELECT athletes.athlete_name as name, athletes.athlete_number as number, teams.team_name as team, teams.team_gender as gender FROM athletes " +
                 "INNER JOIN athletes_has_teams ON athletes.id = athletes_has_teams.athletes_id " +
                 "INNER JOIN teams ON athletes_has_teams.teams_id = teams.id " +

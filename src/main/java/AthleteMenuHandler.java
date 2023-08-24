@@ -202,8 +202,21 @@ public class AthleteMenuHandler {
         AthleteHandler athleteHandlerSow = new AthleteHandler(athleteName, athleteNumber, athleteTeam, athleteGender);
         athleteHandlerSow.showAllAthletes();
 
-        System.out.println("Introduza o ID do atleta que quer associar a uma equipa");
-        int athleteId = scanner.nextInt();
+        boolean validId = false;
+        int athleteId;
+
+        AthleteHandler athleteHandlerExist = new AthleteHandler(athleteName, athleteNumber, athleteTeam, athleteGender);
+
+        do {
+            System.out.println("Introduza o ID do atleta que quer associar a uma nova equipa");
+            athleteId = scanner.nextInt();
+            validId = athleteHandlerExist.athleteExist(athleteId);
+
+            if (validId) {
+                return;
+            }
+
+        } while (!validId);
 
         showTeamOptions();
         showGenderOptions();
@@ -224,7 +237,7 @@ public class AthleteMenuHandler {
         do {
             System.out.println("Introduza o ID do atleta que quer apagar");
             athleteId = scanner.nextInt();
-            validId = athleteHandlerTeam.showAthleteById(athleteId, validId);
+            validId = athleteHandlerTeam.showAthleteById(athleteId);
         } while (!validId);
 
         AthleteHandler athleteHandlerDelete = new AthleteHandler(athleteName, athleteNumber, athleteTeam, athleteGender);
