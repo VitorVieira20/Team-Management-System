@@ -1,6 +1,7 @@
 # Team-Management-System
 To run sucessfuly this project you need to insert your database name, username and password and create the tables like this:
-And you need to insert the teams manually in your database
+And you need to insert the teams manually in your database.
+If doesn't work, make sure that ypu have JDBC library in your project
 
 -- phpMyAdmin SQL Dump
 -- version 5.2.0
