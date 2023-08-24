@@ -11,8 +11,7 @@ public class Main {
             System.out.println("|                                         |");
             System.out.println("| 1- Menu dos Atletas                     |");
             System.out.println("| 2- Menu dos Treinadores                 |");
-            System.out.println("| 3- Menu dos Jogos                       |");
-            System.out.println("| 4- Sair da Aplicação                    |");
+            System.out.println("| 3- Sair da Aplicação                    |");
             System.out.println("|_________________________________________|");
 
             int menuChoice = scanner.nextInt();
@@ -24,9 +23,6 @@ public class Main {
                     trainerMenuHandler.showTrainersMenu();
                     break;
                 case 3:
-                    //athleteMenuHandler.showGamesMenu();
-                    break;
-                case 4:
                     return;
                 default:
                     System.out.println("Opção incorreta: " + menuChoice);
