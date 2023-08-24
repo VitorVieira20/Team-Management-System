@@ -81,13 +81,6 @@ public class AthleteMenuHandler {
             }
         }
     }
-
-    private void showGamesMenu() {
-        System.out.println("Menu dos jogos");
-    }
-    private void showTrainersMenu() {
-        System.out.println("Menu dos treinadores");
-    }
     public void showAthletesMenu() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("---------------Menu Atletas---------------");

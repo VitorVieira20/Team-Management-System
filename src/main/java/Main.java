@@ -3,6 +3,7 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         AthleteMenuHandler athleteMenuHandler = new AthleteMenuHandler();
+        TrainerMenuHandler trainerMenuHandler = new TrainerMenuHandler();
         Scanner scanner = new Scanner(System.in);
 
         while (true) {
@@ -20,7 +21,7 @@ public class Main {
                     athleteMenuHandler.showAthletesMenu();
                     break;
                 case 2:
-                    //athleteMenuHandler.showTrainersMenu();
+                    trainerMenuHandler.showTrainersMenu();
                     break;
                 case 3:
                     //athleteMenuHandler.showGamesMenu();
